@@ -1,12 +1,13 @@
 import { useQuery } from "@tanstack/react-query";
 import CategoriesService from "../services/CategoriesService";
+import { Link } from 'react-router-dom';
 
 const categoriesService = new CategoriesService();
 
 const Categories = () => {
     const { data, isLoading, isError, error } = useQuery({
         queryKey: ['categories'],
-        queryfn: categoriesService.getAllCategoriesRecipe
+        queryFn: () => categoriesService.getAllCategoriesRecipe(),
     });
 
 
@@ -14,9 +15,15 @@ const Categories = () => {
     if (isError) return <div>Error</div>
 
     return (
-        <Link to={`/categories/${categories.name}`} key={categories.name}>   
-                <h1>{categories.name}</h1>
-        </Link>
+        <div>
+            {data && data.map((categorie) => (
+               // .strCategory  vient de l'api
+                    <Link to={`/categorie/${categorie.strCategory}`} key={categorie.strCategory}>   
+                            <h1>{categorie.strCategory}</h1>
+                    </Link>
+                
+            ))};
+        </div>
     )
 }
 
