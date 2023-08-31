@@ -6,7 +6,7 @@ class CategoriesService {
 
     async getAllCategoriesRecipe() {
 		const response = await fetch(`${this.baseUrl}/${this.endpoint}`);
-		if (!response.ok) throw new Error(`${response.status} ${response.statusText}`);
+		if (!response.ok) throw new Error();
 		const data = await response.json();
 		return data.categories;
 	}
