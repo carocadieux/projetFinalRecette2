@@ -3,6 +3,7 @@ import { config } from '../../config';
 class CategoriesService {
     baseUrl = config.baseUrl;
     endpoint = 'categories.php'
+	fiterEnpoint = 'filter.php'
 
     async getAllCategoriesRecipe() {
 		const response = await fetch(`${this.baseUrl}/${this.endpoint}`);
@@ -11,12 +12,11 @@ class CategoriesService {
 		return data.categories;
 	}
 
-	async getCategorieRecipe(name) {
-		const response = await fetch(`${this.baseUrl}/${this.endpoint}/${name}`);
-		console.log(response);
+	async getCategorieRecipe(strCategory) {
+		const response = await fetch(`${this.baseUrl}/${this.fiterEnpoint}?c=${strCategory}`);
 		if (!response.ok) throw new Error();
 		const data = await response.json();
-		return data.categories;
+		return data.meals;
 	}
 
 }
