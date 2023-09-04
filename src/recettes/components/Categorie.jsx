@@ -7,7 +7,7 @@ const categoriesService = new CategoriesService();
 
 const Categorie = () => {
     const params = useParams();
-    //console.log(params);
+    
     const { data, isLoading, isError} = useQuery({
         queryKey: ['categorie', params.strCategory],
         queryFn: () => categoriesService.getCategorieRecipe(params.strCategory),
@@ -20,15 +20,25 @@ const Categorie = () => {
     
 
     return (
+
+        
+                    
+                
         <div>
+              
+                 
             <h1>{params.strCategory}</h1>
 
-            {data && data.map((meals) => (      
-            
-                <Link to={`/categorie/:strCategory${meals.strMeal}`} key={meals.strMeal}>   
-                    <h2>{meals.strMeal}</h2>
-                    <div>{meals.strMealThumb}</div>
-                </Link>
+            {data && data.map((meals) => ( 
+                <div key={meals.idMeal}>  
+                    
+                    
+                    <Link to={`/categorie/meals/${meals.idMeal}`} >   
+                        <h2>{meals.strMeal}</h2>
+                        <img src={meals.strMealThumb} alt={meals.strMealThumb}/>
+                    </Link>
+                    
+                </div>
             ))}  
         </div>
        
