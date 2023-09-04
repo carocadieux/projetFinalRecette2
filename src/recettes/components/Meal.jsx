@@ -1,6 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
 import MealService from "../services/MealService";
 import { useParams } from "react-router-dom";
+import Accordion from 'react-bootstrap/Accordion';
+import { Link } from "react-router-dom";
 
 const mealService = new MealService();
 
@@ -20,13 +22,44 @@ const Meal = () => {
     
     return (
                 <div>
+
+                    <Link to="/">Accueil</Link>
+
                     {data.map((meal) => (
                         <div key={meal.idMeal}>
                             <h1>{meal.strCategory}</h1>
                             <h2>{meal.strMeal}</h2>
-                            <img src={meal.strMealThumb} alt={meal.strMealThumb}/>
-                            <p>{meal.strInstructions}</p>
-                            <p>{meal.strIngredient1}{meal.strMeasure1}</p>
+                            <img src={meal.strMealThumb} className="img-thumbnail w-25 h-25" alt={meal.strMealThumb}/>
+                            <Accordion defaultActiveKey="0">
+                                <Accordion.Item eventKey="1">
+                                    <Accordion.Header>Instructions</Accordion.Header>
+                                        <Accordion.Body>
+                                            {meal.strInstructions}
+                                        </Accordion.Body>
+                                </Accordion.Item>
+                                
+                                <Accordion.Item eventKey="1">
+                                    <Accordion.Header>Ingredients</Accordion.Header>
+                                        <Accordion.Body>
+                                            <ul>
+                                                {Array.from({ length: 20 }, (_, index) => {
+                                                const ingredient = meal[`strIngredient${index + 1}`];
+                                                const measure = meal[`strMeasure${index + 1}`];
+                                                if (ingredient && measure) {
+                                                    return (
+                                                    <li key={index}>
+                                                        {`${ingredient}: ${measure}`}
+                                                    </li>
+                                                    );
+                                                }
+                                                return null;
+                                                })}
+                                            </ul>
+                                        </Accordion.Body>
+                                </Accordion.Item>
+                               
+                                
+                            </Accordion>
                         </div>
                     ))}
                 </div>

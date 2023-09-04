@@ -25,7 +25,7 @@ const Categorie = () => {
                     
                 
         <div>
-              
+            <Link to="/">Accueil</Link> 
                  
             <h1>{params.strCategory}</h1>
 
@@ -35,7 +35,9 @@ const Categorie = () => {
                     
                     <Link to={`/categorie/meals/${meals.idMeal}`} >   
                         <h2>{meals.strMeal}</h2>
-                        <img src={meals.strMealThumb} alt={meals.strMealThumb}/>
+                       
+                            <img src={meals.strMealThumb} className="img-thumbnail w-25 h-25" alt={meals.strMealThumb}/>
+                        
                     </Link>
                     
                 </div>
