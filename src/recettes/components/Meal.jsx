@@ -3,6 +3,7 @@ import MealService from "../services/MealService";
 import { useParams } from "react-router-dom";
 import Accordion from 'react-bootstrap/Accordion';
 import { Link } from "react-router-dom";
+import FavoriteButton from "../../favorites/components/favoriteButton/FavoriteButton";
 
 const mealService = new MealService();
 
@@ -56,10 +57,9 @@ const Meal = () => {
                                                 })}
                                             </ul>
                                         </Accordion.Body>
-                                </Accordion.Item>
-                               
-                                
+                                </Accordion.Item>    
                             </Accordion>
+                            <FavoriteButton/>
                         </div>
                     ))}
                 </div>
