@@ -3,6 +3,7 @@ import {QueryClient, QueryClientProvider} from "@tanstack/react-query"
 import Categories from './recettes/components/Categories'
 import Categorie from './recettes/components/Categorie'
 import Meal from './recettes/components/Meal'
+import ListFavoritesMeals from './recettes/components/ListFavoritesMeals'
 
 const queryClient = new QueryClient()
 
@@ -16,6 +17,7 @@ function App() {
         <Route path="/categorie/:strCategory" element={<Categorie />} />
         <Route path="/categorie/meals/:idMeal" element={<Meal />} />
         <Route path="/categorie/"/>
+        <Route path="/idMeal/listFavorite" element={<ListFavoritesMeals />} />
         
       </Routes>
     </QueryClientProvider>
