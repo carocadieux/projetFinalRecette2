@@ -1,3 +1,3 @@
 export const mealSelector = (state) => {
-	return state.meals.meals;
+	return state.meal.meal;
 };

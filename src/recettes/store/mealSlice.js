@@ -2,9 +2,9 @@ import { createSlice } from '@reduxjs/toolkit'
 import reducers from './mealReducers';
 
 export const mealsSlice = createSlice({
-	name: 'meals',
+	name: 'meal',
 	initialState: {
-		meals: []
+		meal: []
 	},
 	reducers: reducers,
 });

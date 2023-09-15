@@ -59,9 +59,10 @@ const Meal = () => {
                                         </Accordion.Body>
                                 </Accordion.Item>    
                             </Accordion>
-                            <Link to={`/:idMeal/${listFavorite.strMeal}`} >
-                                <FavoriteButton meals={meal}/>
-                            </Link>
+                            
+                            <FavoriteButton meals={meal}/>
+                            
+                            <Link to={"/listFavorite/"} >My favorites</Link>
                         </div>
                     ))}
                 </div>

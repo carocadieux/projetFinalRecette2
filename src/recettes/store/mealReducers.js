@@ -1,7 +1,7 @@
 const reducers = {
 	updateMeals: (state, action) => {
 		if (action.payload && action.payload.results) {
-			state.meals = action.payload.results;
+			state.meal = action.payload.results;
 		}
 
 		return state;

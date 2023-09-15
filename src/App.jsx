@@ -17,7 +17,7 @@ function App() {
         <Route path="/categorie/:strCategory" element={<Categorie />} />
         <Route path="/categorie/meals/:idMeal" element={<Meal />} />
         <Route path="/categorie/"/>
-        <Route path="/idMeal/listFavorite" element={<ListFavoritesMeals />} />
+        <Route path="/listFavorite" element={<ListFavoritesMeals />} />
         
       </Routes>
     </QueryClientProvider>
