@@ -13,7 +13,7 @@ const ListFavoritesMeals= () => {
     <div>
       <h1>My favorites meals</h1>
       {favorites.map((meal) => (
-        <Link to={"/categorie/meals/:idMeal"} key={meal.idMeal}>
+        <Link to={`/categorie/meals/${meal.idMeal}`} key={meal.idMeal}>
           {meal.strMeal}
           <FavoriteButton meals={meal}/>
         </Link>
