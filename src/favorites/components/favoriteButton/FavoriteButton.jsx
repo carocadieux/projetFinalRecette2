@@ -1,6 +1,7 @@
 import { useDispatch, useSelector} from "react-redux";
 import { addFavorite, removeFavorite } from "../../store/favoritesSlices";
 import { favoritesSelector } from "../../store/favoritesSelectors";
+import { Button } from "react-bootstrap";
 
 
 const FavoriteButton = ({ meals }) => {
@@ -18,14 +19,16 @@ const FavoriteButton = ({ meals }) => {
       
     };
     return(
-        <button type="button" onClick={onClick}>
+      <div className="d-flex justify-content-center">
+        <Button className="text-center mt-2" style={{ display: 'flex', alignItems: 'center' }} type="button" onClick={onClick}>
             {isFavorite ? (
                 <p>Enlevez des favoris</p>
             ) : (
                 
                 <p>Ajoutez aux favoris</p>
             )}
-      </button>
+        </Button>
+      </div>
     );
 };
 

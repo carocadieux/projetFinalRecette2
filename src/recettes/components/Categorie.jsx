@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useParams } from 'react-router-dom'
 import CategoriesService from "../services/CategoriesService";
 import { Link } from 'react-router-dom';
+import { Container , Row, Col } from "react-bootstrap"; 
 
 const categoriesService = new CategoriesService();
 
@@ -24,25 +25,29 @@ const Categorie = () => {
         
                     
                 
-        <div>
-            <Link to="/">Accueil</Link> 
-                 
-            <h1>{params.strCategory}</h1>
+        <Container fluid>
 
-            {data && data.map((meals) => ( 
-                <div key={meals.idMeal}>  
-                    
-                    
-                    <Link to={`/categorie/meals/${meals.idMeal}`} >   
-                        <h2>{meals.strMeal}</h2>
-                       
-                            <img src={meals.strMealThumb} className="img-thumbnail w-25 h-25" alt={meals.strMealThumb}/>
+            <Link to="/">Accueil</Link>
+
+            <Col className="text-center">    
+                <h1 classname="my-4">{params.strCategory}</h1>
+            </Col>
+            <Row>
+                {data && data.map((meals) => ( 
+                    <Col className="text-center" md={4} key={meals.idMeal}>  
                         
-                    </Link>
-                    
-                </div>
-            ))}  
-        </div>
+                        
+                        <Link to={`/categorie/meals/${meals.idMeal}`} >   
+                            <h4>{meals.strMeal}</h4>
+                        
+                                <img src={meals.strMealThumb} className="img-thumbnail mb-3" style={{ width: '400px', height: '400px' }} alt={meals.strMealThumb}/>
+                            
+                        </Link>
+                        
+                    </Col>
+                ))}
+            </Row>  
+        </Container>
        
     )
    
